@@ -1,0 +1,48 @@
+Windows文件属性管理器 - 完整安装包使用说明
+
+📁 安装包文件清单：
+├── file_properties_manager.py            (Windows主程序)
+├── file_properties_manager_crossplatform.py  (跨平台主程序，支持macOS/Linux)
+├── requirements.txt                      (Windows依赖列表)
+├── requirements_macos.txt                (macOS/Linux依赖列表)
+├── 自动安装并运行.bat                    (Windows智能安装脚本)
+├── 一键安装.bat                          (Windows快速安装脚本)
+├── 运行程序.bat                          (Windows简单运行脚本)
+├── 清理环境.bat                          (Windows卸载清理脚本)
+├── install_macos.sh                      (macOS安装脚本)
+├── run_macos.sh                          (macOS启动脚本)
+├── install_linux.sh                      (Linux安装脚本)
+├── run_linux.sh                          (Linux启动脚本)
+├── README.md                             (详细说明文档)
+├── 快速开始.txt                          (简化指南)
+├── 安装包使用说明.txt                    (本文件)
+└── macOS使用说明.md                      (macOS专用说明)
+
+🚀 使用方式：
+
+1. 首次使用：
+   - 推荐：双击"自动安装并运行.bat"
+   - 备用：双击"一键安装.bat"
+
+2. 日常使用：
+   - 双击"运行程序.bat"直接启动
+
+3. 重新安装：
+   - 先运行"清理环境.bat"
+   - 再运行"自动安装并运行.bat"
+
+4. 分发安装：
+   - 将整个文件夹压缩发送给其他用户
+   - 接收方只需解压后运行"一键安装.bat"
+
+⚠️ 注意事项：
+- 需要Windows系统
+- 需要管理员权限
+- 需要网络连接下载依赖
+- 建议关闭杀毒软件避免误报
+
+📞 技术支持：
+- 查看README.md获取详细说明
+- 运行失败时查看命令行错误信息
+- 可手动运行pip install命令安装依赖
+- 依赖包问题请参考`依赖包说明.txt`

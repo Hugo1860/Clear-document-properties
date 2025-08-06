@@ -1,0 +1,8 @@
+Pillow>=9.0.0
+PyMuPDF>=1.20.0
+python-docx>=0.8.11
+pywin32>=304
+
+# 可选的额外依赖
+# opencv-python>=4.5.0  # 如果需要更多图像处理功能
+# exifread>=3.0.0      # 备用EXIF读取库

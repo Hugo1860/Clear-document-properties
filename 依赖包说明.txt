@@ -1,0 +1,213 @@
+# 文件属性管理器 - 依赖包详细说明
+
+## 依赖包分类说明
+
+### 核心依赖包（所有平台通用）
+
+#### 1. Pillow (PIL) - 图像处理库
+- **版本**: >=9.0.0
+- **用途**: 处理JPEG、PNG、GIF、BMP等图片格式
+- **功能**: 读取/清除图片的EXIF信息和元数据
+- **安装命令**: pip install Pillow>=9.0.0
+
+#### 2. PyMuPDF (fitz) - PDF处理库
+- **版本**: >=1.20.0
+- **用途**: 处理PDF文档的元数据
+- **功能**: 查看和清除PDF文件的属性信息
+- **安装命令**: pip install PyMuPDF>=1.20.0
+
+#### 3. python-docx - Word文档处理库
+- **版本**: >=0.8.11
+- **用途**: 处理Word文档(.docx)的元数据
+- **功能**: 查看和清除Word文档的属性信息
+- **安装命令**: pip install python-docx>=0.8.11
+
+### 平台特定依赖包
+
+#### Windows系统专用
+##### pywin32 - Windows系统接口库
+- **版本**: >=304
+- **用途**: 访问Windows系统的文件属性API
+- **功能**: 获取和清除Windows特有的文件属性
+- **安装命令**: pip install pywin32>=304
+
+#### macOS系统专用
+##### pyobjc-framework-Cocoa
+- **版本**: >=8.0.0
+- **用途**: macOS系统Cocoa框架的Python接口
+- **功能**: 提供macOS原生GUI支持
+- **安装命令**: pip install pyobjc-framework-Cocoa>=8.0.0
+
+#### Linux系统专用
+##### python3-tk (系统包)
+- **用途**: Linux系统的Tkinter GUI支持
+- **安装方式**: 
+  - Ubuntu/Debian: sudo apt install python3-tk
+  - CentOS/RHEL: sudo yum install python3-tkinter
+  - Arch: sudo pacman -S tk
+
+## 依赖包版本兼容性
+
+### 版本要求对照表
+| 依赖包 | Windows | macOS | Linux | 最低版本 |
+|--------|---------|--------|--------|----------|
+| Python | 3.7+ | 3.7+ | 3.7+ | 3.7 |
+| Pillow | ✓ | ✓ | ✓ | 9.0.0 |
+| PyMuPDF | ✓ | ✓ | ✓ | 1.20.0 |
+| python-docx | ✓ | ✓ | ✓ | 0.8.11 |
+| pywin32 | ✓ | ✗ | ✗ | 304 |
+| pyobjc-framework-Cocoa | ✗ | ✓ | ✗ | 8.0.0 |
+
+## 安装方法对比
+
+### Windows系统
+```
+完整依赖列表:
+- Pillow>=9.0.0
+- PyMuPDF>=1.20.0
+- python-docx>=0.8.11
+- pywin32>=304
+
+安装文件: requirements.txt
+```
+
+### macOS/Linux系统
+```
+完整依赖列表:
+- Pillow>=9.0.0
+- PyMuPDF>=1.20.0
+- python-docx>=0.8.11
+- pyobjc-framework-Cocoa>=8.0.0 (仅macOS)
+
+安装文件: requirements_macos.txt
+```
+
+## 安装命令速查
+
+### 一键安装命令
+
+#### Windows
+```batch
+# 使用批处理文件
+自动安装并运行.bat
+# 或手动安装
+pip install -r requirements.txt
+```
+
+#### macOS
+```bash
+# 使用安装脚本
+chmod +x install_macos.sh
+./install_macos.sh
+# 或手动安装
+pip install -r requirements_macos.txt
+```
+
+#### Linux
+```bash
+# 使用安装脚本
+chmod +x install_linux.sh
+./install_linux.sh
+# 或手动安装
+pip install -r requirements_macos.txt
+```
+
+## 常见问题解决
+
+### 依赖包安装失败处理
+
+#### 1. Pillow安装失败
+**错误**: Could not build wheels for Pillow
+**解决**:
+```bash
+# Windows
+pip install pillow --upgrade --force-reinstall
+
+# macOS/Linux
+pip install pillow --upgrade --force-reinstall
+```
+
+#### 2. PyMuPDF安装失败
+**错误**: Failed to build PyMuPDF
+**解决**:
+```bash
+# 使用预编译版本
+pip install PyMuPDF==1.20.0 --only-binary=all
+```
+
+#### 3. python-docx安装失败
+**错误**: lxml build失败
+**解决**:
+```bash
+# 安装系统依赖后重试
+# Ubuntu/Debian
+sudo apt install libxml2-dev libxslt1-dev
+
+# CentOS/RHEL
+sudo yum install libxml2-devel libxslt-devel
+```
+
+#### 4. pywin32安装失败（Windows）
+**错误**: Access is denied
+**解决**:
+```batch
+# 以管理员身份运行
+pip install pywin32 --upgrade --force-reinstall
+```
+
+## 镜像源加速
+
+### 国内镜像源配置
+
+#### 临时使用镜像源
+```bash
+# 清华源
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 阿里云源
+pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+# 豆瓣源
+pip install -r requirements.txt -i https://pypi.douban.com/simple/
+```
+
+#### 永久配置镜像源
+```bash
+# 配置清华源
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+## 验证安装
+
+### 检查依赖包安装状态
+```python
+# 创建检查脚本 check_deps.py
+import sys
+import pkg_resources
+
+required_packages = [
+    'Pillow',
+    'PyMuPDF',
+    'python-docx',
+    'pywin32',  # Windows
+    'pyobjc'    # macOS
+]
+
+for package in required_packages:
+    try:
+        version = pkg_resources.get_distribution(package).version
+        print(f"✓ {package}: {version}")
+    except pkg_resources.DistributionNotFound:
+        print(f"✗ {package}: 未安装")
+```
+
+### 运行测试
+```bash
+# 激活虚拟环境
+source venv/bin/activate  # macOS/Linux
+# 或
+venv\Scripts\activate     # Windows
+
+# 运行程序测试
+python file_properties_manager_crossplatform.py
+```
